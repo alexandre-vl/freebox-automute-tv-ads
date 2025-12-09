@@ -8,6 +8,7 @@ from rich.live import Live
 from .core.engine import AutoMuteEngine
 from .ui.console import console
 from .ui.display import StatusDisplay
+from .config import CHECK_INTERVAL_TV_OFF
 
 async def main():
     """Point d'entrée principal."""
@@ -33,7 +34,13 @@ async def main():
                     )
                     
                     live.update(panel)
-                    await asyncio.sleep(engine.check_interval)
+                    
+                    # Délai dynamique : 5s si TV OFF, 1s si TV ON
+                    player_status = state["player_status"]
+                    if player_status and player_status.is_tv_on:
+                        await asyncio.sleep(engine.check_interval)  # 1s quand TV ON
+                    else:
+                        await asyncio.sleep(CHECK_INTERVAL_TV_OFF)  # 5s quand TV OFF
                     
     except KeyboardInterrupt:
         console.print("\n[yellow]👋 Au revoir ![/yellow]")

@@ -34,10 +34,11 @@ class AutoMuteEngine:
         if not player_status:
             return
         
-        if player_status.power_state != "running" or not player_status.is_playing:
+        # Si la télé est éteinte ou aucune chaîne n'est regardée, on s'arrête ici
+        if not player_status.is_tv_on:
             return
             
-        # Mise à jour des données OQEE
+        # Mise à jour des données OQEE uniquement si une chaîne est regardée
         await self.oqee_client.update_cache(player_status.channel_uuid)
         
         # Logique de mute

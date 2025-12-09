@@ -15,6 +15,15 @@ class PlayerStatus:
     channel_name: str
     is_playing: bool
     
+    @property
+    def is_tv_on(self) -> bool:
+        """Vérifie si la télé est allumée et regarde une chaîne."""
+        return (
+            self.power_state == "running" and 
+            self.is_playing and 
+            bool(self.channel_uuid)
+        )
+    
     @classmethod
     def from_api_response(cls, data: dict) -> 'PlayerStatus':
         """Crée une instance depuis la réponse API."""

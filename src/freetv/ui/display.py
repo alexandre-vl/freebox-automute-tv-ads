@@ -38,6 +38,21 @@ class StatusDisplay:
         
         # 1. EN-TÊTE : Chaîne & Programme
         # ────────────────────────────────────────────────────────
+        # Vérifier d'abord si la TV est OFF
+        if player_status and not player_status.is_tv_on:
+            content_parts.append(f"[bold dim]📺 Freebox Player[/bold dim]")
+            content_parts.append(f"[yellow]⏸️  TV OFF[/yellow] [dim]• Aucune chaîne regardée[/dim]")
+            content_parts.append("")
+            content_parts.append(f"[dim italic]En attente d'activité...[/dim italic]")
+            
+            return Panel(
+                "\n".join(content_parts),
+                title="🎬 Freebox Auto-Mute",
+                border_style="dim",
+                box=box.ROUNDED,
+                padding=(0, 2)
+            )
+        
         if current_program and player_status:
             # Ligne 1 : Chaîne + Badge Live
             channel_info = f"[bold white]📺 {player_status.channel_name}[/bold white] [dim]• Chaîne {player_status.channel_number}[/dim]"

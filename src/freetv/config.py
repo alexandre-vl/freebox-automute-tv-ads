@@ -10,6 +10,7 @@ FREEBOX_PORT = os.getenv("FREEBOX_PORT", "443")
 
 # Application Settings
 CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "1"))
+CHECK_INTERVAL_TV_OFF = int(os.getenv("CHECK_INTERVAL_TV_OFF", "5"))  # Délai plus long quand TV éteinte
 AD_BREAKS_CACHE_TTL = int(os.getenv("AD_BREAKS_CACHE_TTL", "3"))
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 
