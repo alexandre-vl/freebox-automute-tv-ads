@@ -186,28 +186,6 @@ python tests/test_demute_fix.py
 python tests/test_basic.py
 ```
 
----
-
-## 📊 Performance
-
-- **Consommation mémoire** : ~50 MB
-- **CPU** : < 1% en moyenne
-- **Latence de détection** : 1-2 secondes
-- **Appels API** : Cache intelligent (refresh toutes les 3s max)
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Support multi-Freebox
-- [ ] Interface web (dashboard)
-- [ ] Statistiques de pubs détectées
-- [ ] Export des données en JSON/CSV
-- [ ] Support d'autres box (LiveBox, etc.)
-- [ ] Mode "apprentissage" pour améliorer la détection
-
----
-
 ## 🤝 Contribution
 
 Les contributions sont les bienvenues ! N'hésitez pas à :
